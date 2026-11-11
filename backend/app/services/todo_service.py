@@ -38,7 +38,7 @@ async def create_todo(user: User, data: TodoCreate, session: Session) -> Todo:
 
 
 async def retrieve_todo(user: User, todo_id: UUID, session: Session) -> Optional[Todo]:
-    statement = select(Todo).where(Todo.id == todo_id).where(Todo.user_id == user.id)
+    statement = select(Todo).where(Todo.id == todo_id)
 
     results = session.exec(statement)
     todo = results.first()
